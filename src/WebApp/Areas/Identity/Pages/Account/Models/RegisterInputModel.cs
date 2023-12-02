@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebShop.Areas.Identity.Pages.Account.Models;
+namespace MyeShop.WebApp.Areas.Identity.Pages.Account.Models;
 
 public class RegisterInputModel
 {

@@ -1,8 +1,20 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using MyeShop.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddConsole();
+
+if (builder.Environment.IsDevelopment())
+{
+    MyeShop.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+}
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddDefaultUI()
+    .AddEntityFrameworkStores<AppIdentityDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 

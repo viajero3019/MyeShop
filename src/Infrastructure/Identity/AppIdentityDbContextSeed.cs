@@ -14,7 +14,7 @@ public class AppIdentityDbContextSeed
 
         await roleManager.CreateAsync(new IdentityRole(ADMINISTRATORS));
 
-        var defaultUser = new ApplicationUser { UserName = "test", Email = "test@test.com"};
+        var defaultUser = new ApplicationUser { UserName = "admin@microsoft.com", Email = "admin@microsoft.com"};
        
         await userManager.CreateAsync(defaultUser, DEFAULT_PASSWORD);
 

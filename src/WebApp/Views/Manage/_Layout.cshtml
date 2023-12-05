@@ -1,0 +1,24 @@
+@{ 
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<div class="div-signin">
+
+<div class="container">
+    <h2>Manage your account</h2>
+    <h5>Change your account settings</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-8">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+   

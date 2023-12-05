@@ -1,4 +1,4 @@
-namespace MyeShop.WebApp.Models;
+namespace MyeShop.WebApp.ViewModels;
 
 public class ErrorViewModel
 {

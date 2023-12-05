@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - My eShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/signin.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @* <link rel="stylesheet" href="~/WebShop.styles.css" asp-append-version="true" /> *@
 </head>
 <body>
     <header>
-        <div class="container">
-
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-2">
                 <div class="container-fluid">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Shop</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -29,8 +29,8 @@
                                 @Context.User.Identity.Name
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" asp-controller="Manage" asp-action="MyAccount">Account</a>
+                                    <a class="dropdown-item" >My Orders</a>
                                 <div class="dropdown-divider"></div>
                                 <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar-right"></form>
                                 <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
@@ -38,7 +38,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                 }
                 else
                 {
@@ -53,11 +52,8 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @RenderBody()
+
     @* <div class="b-example-divider"></div> *@
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

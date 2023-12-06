@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using MyeShop.Infrastructure.Identity;
 using MyeShop.WebApp.Configuration;
+using MyeShop.WebApp.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
@@ -43,8 +44,6 @@ var app = builder.Build();
 app.Logger.LogInformation("--> App created...");
 
 
-
-
 app.UseStaticFiles();
 
 app.MapRazorPages();
@@ -53,25 +52,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-using (var scope = app.Services.CreateScope())
-{
-    var scopeProvider = scope.ServiceProvider;
-    try
-    {
-        app.Logger.LogInformation("Seeding the DB.");
 
-        var userManager = scopeProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        var roleManager = scopeProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        var IdentityContext = scopeProvider.GetRequiredService<AppIdentityDbContext>();
-        await AppIdentityDbContextSeed.SeedAsync(IdentityContext, userManager, roleManager);
-    }
-    catch (System.Exception ex)
-    {
-        app.Logger.LogError(ex, "An error occurred seeding the DB.");
-        throw;
-    }
-}
+PrepDbExtensions.PrepIdentityPopulation(app);
 
 app.Logger.LogInformation("LAUNCHING");
 
 app.Run();
+// PrepDb.PrepPopulation(app, env.IsProduction());

@@ -1,0 +1,4 @@
+
+dotnet ef migrations add InitIdentityModel --project src/Infrastructure --startup-project src/WebApp --context AppIdentityDbContext
+
+dotnet ef database update InitIdentityModel --project src/WebApp 

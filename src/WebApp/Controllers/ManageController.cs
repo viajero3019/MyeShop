@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyeShop.Infrastructure.Identity;
 using MyeShop.WebApp.ViewModels.Manage;
-using MyeShop.Web.Extensions;
 using MyeShop.ApplicationCore.Interfaces;
 using MyeShop.WebApp.Configuration;
 using System.Text.Json;
 using MyeShop.ApplicationCore;
+using MyeShop.WebApp.Extensions;
 
 namespace MyeShop.WebApp.Controllers;
 

@@ -54,7 +54,7 @@ public class EmailSender : IEmailSender
     private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
     {
         // Get the unique identifier for this asynchronous operation.
-        String token = (string)e.UserState;
+        String token = (string)e.UserState!;
 
         if (e.Cancelled)
         {

@@ -4,7 +4,7 @@ using MyeShop.ApplicationCore;
 using MyeShop.ApplicationCore.Interfaces;
 using MyeShop.WebApp.Configuration;
 
-namespace MyeShop.Web.Extensions;
+namespace MyeShop.WebApp.Extensions;
 
 public static class EmailSenderExtensions
 {

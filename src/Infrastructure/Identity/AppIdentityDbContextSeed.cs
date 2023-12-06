@@ -12,23 +12,28 @@ public class AppIdentityDbContextSeed
     {
         Console.WriteLine("--> Seeding Users");
 
-        await roleManager.CreateAsync(new IdentityRole(ADMINISTRATORS));
-
-        var defaultUser = new ApplicationUser { UserName = "admin@microsoft.com", Email = "admin@microsoft.com"};
-       
-        await userManager.CreateAsync(defaultUser, DEFAULT_PASSWORD);
-
-        string adminUserName = "admin@test.com";
-
-        var adminUSer = new ApplicationUser { UserName = adminUserName, Email = adminUserName};
-
-        await userManager.CreateAsync(adminUSer, DEFAULT_PASSWORD);
-
-        adminUSer = await userManager.FindByNameAsync(adminUserName);
-
-        if(adminUSer != null) 
+        if (!appIdentityDbContext.Users.Any())
         {
-            await userManager.AddToRoleAsync(adminUSer, ADMINISTRATORS);
+            await roleManager.CreateAsync(new IdentityRole(ADMINISTRATORS));
+
+            var defaultUser = new ApplicationUser { UserName = "admin@microsoft.com", Email = "admin@microsoft.com" };
+            await userManager.CreateAsync(defaultUser, DEFAULT_PASSWORD);
+
+            string adminUserName = "admin@test.com";
+            var adminUSer = new ApplicationUser { UserName = adminUserName, Email = adminUserName };
+            await userManager.CreateAsync(adminUSer, DEFAULT_PASSWORD);
+
+            adminUSer = await userManager.FindByNameAsync(adminUserName);
+
+            if (adminUSer != null)
+            {
+                await userManager.AddToRoleAsync(adminUSer, ADMINISTRATORS);
+            }
         }
+        else
+        {
+            Console.WriteLine("--> We already have data");
+        }
+
     }
 }

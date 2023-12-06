@@ -16,9 +16,13 @@ public static class Dependencies
             useOnlyInMemoryDatabase = bool.Parse(configuration["UseOnlyInMemoryDatabase"]!);
         }
 
-        if(useOnlyInMemoryDatabase)
+        if (useOnlyInMemoryDatabase)
         {
             services.AddDbContext<AppIdentityDbContext>(context => context.UseInMemoryDatabase("Identity"));
+        }
+        else
+        {
+            services.AddDbContext<AppIdentityDbContext>(context => context.UseSqlServer(configuration.GetConnectionString("SqlServerIdentityConnection")));
         }
     }
 }

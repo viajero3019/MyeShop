@@ -8,11 +8,12 @@ using MyeShop.WebApp.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
 
+
 if (builder.Environment.IsDevelopment())
 {
+    builder.Configuration.AddJsonFile("mailsettings.json");
     MyeShop.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 }
-
 builder.Services.AddCookieSettings();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -27,6 +28,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultUI()
     .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddCoreServices(builder.Configuration);
 
 builder.Services.AddControllersWithViews();
 

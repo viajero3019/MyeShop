@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyeShop.Infrastructure.Identity;
 using MyeShop.WebApp.Areas.Identity.Pages.Account.Models;
-// using Ardalis.GuardClauses;
 
 namespace MyeShop.WebApp.Areas.Identity.Pages.Account;
 

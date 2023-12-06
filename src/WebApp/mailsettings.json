@@ -1,0 +1,8 @@
+{
+  "Smtp": {
+    "Server": "smtp.gmail.com",
+    "Port": "587",
+    "FromAddress": "test@gmail.com",
+    "Credentials": "sdasdasdfasd"
+  }
+}
